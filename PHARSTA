@@ -1,0 +1,639 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>PHRASTAFEST 2026 | Department of Botany</title>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: "Segoe UI", Arial, sans-serif;
+        }
+
+        body {
+            background: #f5f7fb;
+            color: #1f2937;
+        }
+
+        /* HEADER */
+        header {
+            background: linear-gradient(135deg, #12372a, #1f6f50);
+            color: white;
+            padding: 18px 7%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 3px 15px rgba(0,0,0,0.15);
+        }
+
+        .logo {
+            font-size: 24px;
+            font-weight: 800;
+            letter-spacing: 1px;
+        }
+
+        nav a {
+            color: white;
+            text-decoration: none;
+            margin-left: 25px;
+            font-weight: 500;
+        }
+
+        nav a:hover {
+            opacity: 0.8;
+        }
+
+        /* HERO */
+        .hero {
+            min-height: 480px;
+            background:
+                linear-gradient(rgba(8,45,31,0.82), rgba(8,45,31,0.82)),
+                url("https://images.unsplash.com/photo-1497250681960-ef046c08a56e?auto=format&fit=crop&w=1800&q=80");
+            background-size: cover;
+            background-position: center;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: 50px 20px;
+            color: white;
+        }
+
+        .hero-content {
+            max-width: 850px;
+        }
+
+        .hero h1 {
+            font-size: clamp(48px, 8vw, 90px);
+            letter-spacing: 4px;
+            font-weight: 900;
+            margin-bottom: 10px;
+        }
+
+        .hero .year {
+            font-size: 30px;
+            font-weight: 600;
+            letter-spacing: 5px;
+            margin-bottom: 25px;
+        }
+
+        .hero p {
+            font-size: 19px;
+            line-height: 1.7;
+        }
+
+        .college {
+            margin-top: 8px;
+            font-size: 17px;
+            opacity: 0.9;
+        }
+
+        .register-btn {
+            display: inline-block;
+            margin-top: 30px;
+            padding: 14px 32px;
+            background: #ffffff;
+            color: #155c3f;
+            text-decoration: none;
+            border-radius: 30px;
+            font-weight: 700;
+            transition: 0.3s;
+        }
+
+        .register-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 20px rgba(0,0,0,0.25);
+        }
+
+        /* INFO */
+        .info-section {
+            padding: 60px 7%;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 35px;
+        }
+
+        .section-title h2 {
+            font-size: 34px;
+            color: #12372a;
+        }
+
+        .section-title p {
+            margin-top: 8px;
+            color: #6b7280;
+        }
+
+        .cards {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 25px;
+            max-width: 1100px;
+            margin: auto;
+        }
+
+        .card {
+            background: white;
+            padding: 30px;
+            border-radius: 16px;
+            text-align: center;
+            box-shadow: 0 5px 25px rgba(0,0,0,0.07);
+        }
+
+        .card .icon {
+            font-size: 35px;
+            margin-bottom: 15px;
+        }
+
+        .card h3 {
+            color: #12372a;
+            margin-bottom: 10px;
+        }
+
+        .card p {
+            color: #6b7280;
+        }
+
+        /* REGISTRATION */
+        .registration {
+            background: #eef5f1;
+            padding: 70px 20px;
+        }
+
+        .form-container {
+            max-width: 800px;
+            margin: auto;
+            background: white;
+            padding: 40px;
+            border-radius: 20px;
+            box-shadow: 0 10px 35px rgba(0,0,0,0.08);
+        }
+
+        .form-container h2 {
+            text-align: center;
+            color: #12372a;
+            margin-bottom: 10px;
+            font-size: 32px;
+        }
+
+        .form-subtitle {
+            text-align: center;
+            color: #6b7280;
+            margin-bottom: 30px;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        label {
+            display: block;
+            font-weight: 600;
+            margin-bottom: 7px;
+            color: #374151;
+        }
+
+        input,
+        select,
+        textarea {
+            width: 100%;
+            padding: 13px 15px;
+            border: 1px solid #d1d5db;
+            border-radius: 9px;
+            font-size: 15px;
+            outline: none;
+            transition: 0.2s;
+        }
+
+        input:focus,
+        select:focus,
+        textarea:focus {
+            border-color: #1f6f50;
+            box-shadow: 0 0 0 3px rgba(31,111,80,0.1);
+        }
+
+        textarea {
+            resize: vertical;
+            min-height: 100px;
+        }
+
+        .two-column {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+        }
+
+        .submit-btn {
+            width: 100%;
+            padding: 15px;
+            border: none;
+            border-radius: 10px;
+            background: linear-gradient(135deg, #12372a, #1f6f50);
+            color: white;
+            font-size: 17px;
+            font-weight: 700;
+            cursor: pointer;
+            margin-top: 10px;
+        }
+
+        .submit-btn:hover {
+            opacity: 0.92;
+        }
+
+        /* SUCCESS */
+        #successMessage {
+            display: none;
+            text-align: center;
+            padding: 30px;
+        }
+
+        #successMessage .success-icon {
+            font-size: 55px;
+            margin-bottom: 15px;
+        }
+
+        #successMessage h2 {
+            color: #166534;
+            margin-bottom: 10px;
+        }
+
+        .registration-number {
+            margin-top: 15px;
+            padding: 15px;
+            background: #eef8f2;
+            border-radius: 10px;
+            font-size: 20px;
+            font-weight: bold;
+            color: #166534;
+        }
+
+        /* FOOTER */
+        footer {
+            background: #0d261c;
+            color: white;
+            text-align: center;
+            padding: 30px 20px;
+        }
+
+        footer p {
+            margin: 5px 0;
+            opacity: 0.85;
+        }
+
+        /* MOBILE */
+        @media (max-width: 768px) {
+
+            header {
+                padding: 15px 5%;
+            }
+
+            nav {
+                display: none;
+            }
+
+            .hero {
+                min-height: 430px;
+            }
+
+            .hero h1 {
+                letter-spacing: 2px;
+            }
+
+            .cards {
+                grid-template-columns: 1fr;
+            }
+
+            .two-column {
+                grid-template-columns: 1fr;
+                gap: 0;
+            }
+
+            .form-container {
+                padding: 25px 20px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+<!-- HEADER -->
+<header>
+    <div class="logo">PHRASTAFEST '26</div>
+
+    <nav>
+        <a href="#home">Home</a>
+        <a href="#about">About</a>
+        <a href="#register">Register</a>
+    </nav>
+</header>
+
+
+<!-- HERO -->
+<section class="hero" id="home">
+
+    <div class="hero-content">
+
+        <h1>PHRASTAFEST</h1>
+
+        <div class="year">2026</div>
+
+        <p>
+            An Intercollegiate Botanical Fest
+        </p>
+
+        <div class="college">
+            Conducted by Department of Botany<br>
+            St. Joseph's College (Autonomous), Tiruchirappalli – 2
+        </div>
+
+        <a href="#register" class="register-btn">
+            REGISTER NOW
+        </a>
+
+    </div>
+
+</section>
+
+
+<!-- ABOUT -->
+<section class="info-section" id="about">
+
+    <div class="section-title">
+        <h2>PHRASTAFEST 2026</h2>
+        <p>Celebrate science, creativity and the world of plants.</p>
+    </div>
+
+    <div class="cards">
+
+        <div class="card">
+            <div class="icon">🌿</div>
+            <h3>Botany</h3>
+            <p>
+                Explore the fascinating world of plant science
+                through exciting competitions.
+            </p>
+        </div>
+
+        <div class="card">
+            <div class="icon">🏆</div>
+            <h3>Competitions</h3>
+            <p>
+                Participate in engaging events and showcase
+                your knowledge and talent.
+            </p>
+        </div>
+
+        <div class="card">
+            <div class="icon">🎓</div>
+            <h3>Intercollegiate</h3>
+            <p>
+                Students from different institutions come
+                together for an academic celebration.
+            </p>
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- REGISTRATION -->
+<section class="registration" id="register">
+
+    <div class="form-container">
+
+        <h2>Participant Registration</h2>
+
+        <p class="form-subtitle">
+            Fill in your details to register for PHRASTAFEST 2026
+        </p>
+
+        <form id="registrationForm">
+
+            <div class="two-column">
+
+                <div class="form-group">
+                    <label for="name">Full Name *</label>
+
+                    <input
+                        type="text"
+                        id="name"
+                        name="name"
+                        placeholder="Enter your full name"
+                        required>
+                </div>
+
+
+                <div class="form-group">
+                    <label for="phone">Mobile Number *</label>
+
+                    <input
+                        type="tel"
+                        id="phone"
+                        name="phone"
+                        placeholder="10-digit mobile number"
+                        pattern="[0-9]{10}"
+                        required>
+                </div>
+
+            </div>
+
+
+            <div class="form-group">
+
+                <label for="email">Email Address *</label>
+
+                <input
+                    type="email"
+                    id="email"
+                    name="email"
+                    placeholder="example@gmail.com"
+                    required>
+
+            </div>
+
+
+            <div class="form-group">
+
+                <label for="college">College / Institution *</label>
+
+                <input
+                    type="text"
+                    id="college"
+                    name="college"
+                    placeholder="Enter your college name"
+                    required>
+
+            </div>
+
+
+            <div class="two-column">
+
+                <div class="form-group">
+
+                    <label for="department">Department *</label>
+
+                    <input
+                        type="text"
+                        id="department"
+                        name="department"
+                        placeholder="e.g. Botany"
+                        required>
+
+                </div>
+
+
+                <div class="form-group">
+
+                    <label for="year">Year of Study *</label>
+
+                    <select id="year" name="year" required>
+
+                        <option value="">Select Year</option>
+                        <option>1st Year</option>
+                        <option>2nd Year</option>
+                        <option>3rd Year</option>
+                        <option>PG - 1st Year</option>
+                        <option>PG - 2nd Year</option>
+
+                    </select>
+
+                </div>
+
+            </div>
+
+
+            <div class="form-group">
+
+                <label for="event">Select Competition *</label>
+
+                <select id="event" name="event" required>
+
+                    <option value="">Select Competition</option>
+
+                    <option>Botanical Quiz</option>
+                    <option>Plant Identification</option>
+                    <option>Poster Presentation</option>
+                    <option>Essay Writing</option>
+                    <option>Photography</option>
+                    <option>Floral Arrangement</option>
+
+                </select>
+
+            </div>
+
+
+            <div class="form-group">
+
+                <label for="address">Address</label>
+
+                <textarea
+                    id="address"
+                    name="address"
+                    placeholder="Enter your address"></textarea>
+
+            </div>
+
+
+            <button type="submit" class="submit-btn">
+                SUBMIT REGISTRATION
+            </button>
+
+        </form>
+
+
+        <!-- SUCCESS MESSAGE -->
+
+        <div id="successMessage">
+
+            <div class="success-icon">✅</div>
+
+            <h2>Registration Successful!</h2>
+
+            <p>
+                Thank you for registering for PHRASTAFEST 2026.
+            </p>
+
+            <div class="registration-number">
+                Registration No:
+                <span id="regNumber"></span>
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- FOOTER -->
+<footer>
+
+    <p>
+        <strong>PHRASTAFEST 2026</strong>
+    </p>
+
+    <p>
+        Department of Botany
+    </p>
+
+    <p>
+        St. Joseph's College (Autonomous), Tiruchirappalli – 2
+    </p>
+
+    <p style="margin-top:15px;">
+        © 2026 PHRASTAFEST. All Rights Reserved.
+    </p>
+
+</footer>
+
+
+<script>
+
+    const form = document.getElementById("registrationForm");
+
+    form.addEventListener("submit", function(event) {
+
+        event.preventDefault();
+
+        /*
+            TEMPORARY REGISTRATION NUMBER
+
+            This is only a demonstration.
+            The registration is NOT saved to a database yet.
+        */
+
+        const randomNumber =
+            Math.floor(10000 + Math.random() * 90000);
+
+        const registrationNumber =
+            "PHRASTA26-" + randomNumber;
+
+        document.getElementById("regNumber").textContent =
+            registrationNumber;
+
+        form.style.display = "none";
+
+        document.getElementById("successMessage").style.display =
+            "block";
+
+        window.scrollTo({
+            top: document.getElementById("register").offsetTop,
+            behavior: "smooth"
+        });
+
+    });
+
+</script>
+
+</body>
+</html>
